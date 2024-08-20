@@ -1,0 +1,531 @@
+.bar * {
+  all: unset;
+  font-family: "ZedMono NF";
+  font-size: 1.0rem; }
+
+.bar .cbox {
+  margin: 5px 5px 0px 5px;
+  background: #000000;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  padding: 0.2em; 
+  border-radius: 20px;
+}
+
+
+.bar button {
+  border-radius: 4px;
+  padding: 0 0.8rem;
+  background: #000000;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  transition: all 0.5s cubic-bezier(0.17, 0.67, 0.24, 1.46); }
+  .bar button:hover {
+    background: #0c1012; }
+
+.bar .app-l-button {
+  padding: 0 2px; }
+  .bar .app-l-button .icon {
+    color: #dadada;
+         font-size: 18px; }
+
+.bar .workspaces {
+  background: #000000;
+  border-radius: 4px; }
+  .bar .workspaces button {
+    padding: 0;
+    margin: 2px 0; }
+    .bar .workspaces button box {
+      min-height: 14px;
+      min-width: 0px;
+      margin: 0.8em 0.4rem;
+      transition: all 0.4s cubic-bezier(0.17, 0.67, 0.24, 1.46);
+      background: #303030;
+      border-radius: 0.8rem; }
+    .bar .workspaces button.occupied box {
+      background: #ffffff; }
+    .bar .workspaces button.active box {
+      min-width: 3em;
+      background: #62a5b8; }
+    .bar .workspaces button:first-child {
+      margin-left: 4px; }
+    .bar .workspaces button:last-child {
+      margin-right: 4px; }
+
+.bar .tray {
+  border-radius: 4px;
+  padding: 0 0.8rem;
+  background: #000000;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  padding: 0 2px; }
+  .bar .tray button {
+    padding: 0;
+    margin: 5px 0; }
+    .bar .tray button:first-child {
+      margin-left: 2px; }
+    .bar .tray button:last-child {
+      margin-right: 2px; }
+    .bar .tray button:hover {
+      color: #0c1012; }
+
+  .bar .battery-label label {
+    color: #dadada;
+    font-size: 16px;
+    margin-left: 12px;
+    padding: 0; }
+    
+
+.bar .clock {
+
+  border-radius: 20px;
+  padding: 0 0.8rem;
+  background: #222222;
+  min-width: 2rem;
+  min-height: 1.8rem;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.5); }
+  .bar .clock label {
+    color: #dadada;
+    margin-left:8px;
+    margin-right:8px;
+    font-weight:bold;
+    font-size:16px; }
+
+.bar .control-button {
+  border-radius: 4px;
+  padding: 0 0.8rem;
+  background: #000000;
+  min-width: 2.0rem;
+  min-height: 2.0rem; }
+  .bar .control-button .speaker {
+    font-size: 26px; }
+  .bar .control-button .microphone {
+    font-size: 18px;}
+  .bar .control-button .network {
+    font-size: 26px; }
+
+
+window#notifications box.notifications {
+    padding: .5em;
+}
+
+window#notifications .icon {
+    min-width: 68px;
+    min-height: 68px;
+    margin-right: 1em;
+}
+
+window#notifications .icon image {
+    font-size: 58px;
+    /* to center the icon */
+    margin: 5px;
+    color: @theme_fg_color;
+}
+
+window#notifications .icon box {
+    min-width: 68px;
+    min-height: 68px;
+    border-radius: 7px;
+}
+
+ window#notifications .notification {
+    min-width: 350px;
+    border-radius: 11px;
+    padding: 1em;
+    margin: .5em;
+    border: 1px solid @wm_borders_edge;
+    background-color: @theme_bg_color;
+}
+
+window#notifications .notification.critical {
+    border: 1px solid lightcoral;
+}
+
+window#notifications .title {
+    color: @theme_fg_color;
+    font-size: 1.4em;
+}
+
+window#notifications .body {
+    color: @theme_unfocused_fg_color;
+}
+
+window#notifications .actions .action-button {
+    margin: 0 .4em;
+    margin-top: .8em;
+}
+
+window#notifications .actions .action-button:first-child {
+    margin-left: 0;
+}
+
+window#notifications .actions .action-button:last-child {
+    margin-right: 0;
+}
+window#image-window {
+  all: unset;
+  background: transparent; }
+  window#image-window .image-box {
+    margin: 0.8rem;
+    border: 2px solid #050505;
+    border-radius: 12px;
+    box-shadow: 0 0 2px 2px #050505;
+    min-width: 200px;
+    min-height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; }
+
+window#control_panel {
+  background: transparent; }
+  window#control_panel * {
+    all: unset;
+    font-family: "ZedMono NF";
+    font-size: 2rem; }
+ window#control_panel .toggle-button {
+    min-height:40px;
+    background-color: #000;
+    border-radius: 0px;
+}
+
+window#control_panel .arrow{
+    border-radius:  0px 10px 10px 0px;
+   
+}
+window#control_panel .simple-toggle {
+  border-radius: 10px;
+}
+  window#control_panel .control-box {
+    background: #000000;
+    margin: 0.65rem;
+    border-radius: 20px;
+
+    padding: 1rem; }
+  window#control_panel button {
+    border-radius: 10px 0px 0px 10px;
+    background: #222222;
+    transition: all 0.5s cubic-bezier(0.17, 0.67, 0.24, 1.46); }
+/* General Calendar Box Styling */
+window#control_panel .cal-box {
+  border-radius: 12px;
+  background: #222222;
+  color: #ececec;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar Inner Box Styling */
+window#control_panel .cal-box .cal {
+  border-radius: 12px;
+  border:1px solid #222222;
+  padding: 0.3rem;
+  background: #222222;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar General Styling */
+window#control_panel calendar {
+  background: transparent;
+}
+
+/* Calendar Header and Button Styling */
+window#control_panel calendar.header,
+window#control_panel calendar.button {
+  color: #76a4e3;
+  font-weight: bold;
+}
+
+/* Selected Date Styling */
+window#control_panel calendar:selected {
+  color: #76a4e3;
+  background: #dddddd;
+  border-radius: 50%;
+}
+
+window#control_panel calendar.highlight {
+  color: #76a4e3;
+  border-radius: 50%;
+  padding: 0.2rem;
+
+}
+
+window#control_panel calendar:indeterminate {
+  color: rgba(236, 236, 236, 0.1);
+  background: #2b2b2b;
+  border-radius: 50%;
+}
+
+  window#control_panel .audio-slider {
+    background: #222222;
+    padding: 0 0.8em;
+    min-height: 3em;
+    border-radius: 20px 20px 0px 0px; }
+    window#control_panel .audio-slider scale trough {
+      background: rgba(218, 218, 218, 0.1);
+      min-height: 1.2rem;
+        margin-right: 15px;
+      border-radius: 20px; }
+      window#control_panel .audio-slider scale trough slider {
+        background: none;
+        box-shadow: none;
+        border: none; }
+      window#control_panel .audio-slider scale trough highlight {
+        border-radius: 20px;
+
+        border: none; }
+    window#control_panel .audio-slider .icon {
+      margin-right: 1.2rem; }
+    window#control_panel .audio-slider.speaker .icon {
+      color: #76a4e3; }
+    window#control_panel .audio-slider.speaker scale trough highlight {
+      background: #76a4e3; }
+    /*window#control_panel .audio-slider.microphone .icon {
+      color: #8ccf7e; }
+    window#control_panel .audio-slider.microphone scale trough highlight {
+      background: #8ccf7e; 
+      border-radius: 20px;}*/
+  window#control_panel .power-box {
+    background: #1c2121;
+    padding: 0.8em; }
+    window#control_panel .power-box button {
+      background: #0c1012;
+      min-width: 3rem;
+      min-height: 3rem; }
+      window#control_panel .power-box button:focus {
+        background: #5a85db; }
+      window#control_panel .power-box button:hover {
+        background: #5a85db; }
+      window#control_panel .power-box button:nth-child(1) {
+        color: #e86b6b; }
+      window#control_panel .power-box button:nth-child(2) {
+        color: #76a4e3; }
+      window#control_panel .power-box button:nth-child(3) {
+        color: #6faf7f; }
+      window#control_panel .power-box button:nth-child(4) {
+        color: #62a5b8; }
+ window#control_panel .brightness-slider {
+    background: #222222;
+    padding: 0 0.8em;
+    min-height: 3em;
+    border-radius: 0px 0px 20px 20px; }
+ window#control_panel .brightness-slider .icon {
+   color:#76a4e3;}
+    window#control_panel .brightness-slider scale trough {
+      background: rgba(218, 218, 218, 0.1);
+      min-height: 1.2rem;
+      border-radius: 20px; }
+      window#control_panel .brightness-slider scale trough slider {
+        background: none;
+        box-shadow: none;
+        border: none; }
+      window#control_panel .brightness-slider scale trough highlight {
+        border-radius: 20px;
+        border: none; 
+        background: #76a4e3;}
+/* Base window styling */
+window#app_launcher {
+  background: transparent;
+}
+
+/* Global reset and font styling */
+window#app_launcher * {
+  all: unset;
+  font-family: "ZedMono NF", monospace;
+  font-size: 1.6rem;
+  color: #dadada;
+}
+
+/* Button styling */
+window#app_launcher button {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  color: #dadada;
+  background: #000000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+window#app_launcher button:focus {
+  background: linear-gradient(145deg, #1c1012, #2a1a1c);
+  color: #62a5b8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+window#app_launcher button:hover {
+  background: linear-gradient(145deg, #1e1e1e, #292929);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* Entry field styling */
+window#app_launcher .entry {
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(145deg, #2a2a2a, #222222);
+  border-radius: 20px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Title styling */
+window#app_launcher .title {
+  margin: 0 1rem;
+  color: #ffffff;
+}
+
+/* Outer box styling */
+window#app_launcher .al-out-box {
+  background: #101010;
+  padding: 0.8rem;
+  margin: 0.8rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Inner box styling */
+window#app_launcher .al-out-box .al-in-box {
+  background: #000000;
+  border-radius: 20px;
+  padding: 0.8rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+window#NotificationMenu {
+    font-size: 1.6rem; 
+    border-radius: 20px; 
+    background-color: #000000;
+    color: #fff; /* Text color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    padding: 20px; 
+}
+
+window#NotificationMenu .noti-box {
+    min-width: 500px;
+    min-height: 800px;
+    border-radius: 20px; 
+    background-color: #000001;
+    padding: 10px; 
+
+  
+}
+window#NotificationMenu .notification {
+    background-color: #151515; 
+    border-radius: 8px; 
+    margin-bottom: 10px; 
+    padding: 15px; 
+    transition: background-color 0.3s; 
+}
+window#NotificationMenu .notification:hover {
+    background-color: #555; 
+}
+
+window#NotificationMenu .notification-list-vertical {
+    padding: 10px; 
+}
+window#NotificationMenu .notification .title {
+    font-weight: bold; 
+    color: #ddd; 
+    margin-left:4px;
+}
+window#NotificationMenu .notification .icon  {
+    margin-right:10px;
+    border-radius: 7px;
+}
+window#NotificationMenu .notification .body {
+    color: #151515; 
+    margin-top: 5px; 
+    margin-left:4px;
+}
+window#NotificationMenu .notification .actions {
+    margin-top: 10px; 
+}
+
+window#NotificationMenu .notification .action-button {
+    background-color: #007bff; 
+    color: #fff;
+    border: none; 
+    border-radius: 5px; 
+    padding: 8px 12px; 
+    transition: background-color 0.3s;
+}
+
+window#NotificationMenu .notification .action-button:hover {
+    background-color: #0056b3; 
+}
+window#NotificationMenu .media__container{
+  padding: 10px;
+  background:   #222222;
+  border-radius: 10px;
+}
+
+window#NotificationMenu .clear-button {
+    background-color: #e74c3c; 
+    color: #fff; 
+    border: none; 
+    border-radius: 20px; 
+    padding: 10px; 
+    transition: background-color 0.3s; 
+}
+
+window#NotificationMenu .clear-button:hover {
+    background-color: #c0392b; 
+}
+window#OSD {
+ border-radius:40px;
+}
+window#OSD *{
+  padding: 2px;
+}
+window#OSD .osd_vol{
+ background: #000;
+}
+
+
+window#OSD .audio-slider {
+    background: #000000;
+    padding: 0 0.8em;
+    min-height: 4em;
+    border-radius: 20px ; }
+    window#OSD .audio-slider scale trough {
+      background: rgba(218, 218, 218, 0.1);
+      min-height: 1.2rem;
+      min-width: 16rem;
+      margin-right: 15px;
+      border-radius: 20px; }
+      window#OSD .audio-slider scale trough slider {
+        background: none;
+        box-shadow: none;
+        border: none; }
+      window#OSD .audio-slider scale trough highlight {
+        border-radius: 20px;
+  background: #76a4e3;
+        border: none; }
+    window#OSD .audio-slider .icon {
+      font-size:20px;
+      margin-right: 0.4rem;
+      margin-left: 0.8rem; }
+    window#OSD .audio-slider.speaker .icon {
+      color: #76a4e3; }
+    window#OSD .audio-slider.speaker scale trough highlight {
+      background: #76a4e3; }
+window#OSD .brightness-slider {
+    background: #000000;
+    padding: 0 0.8em;
+    min-height: 4em;
+    border-radius: 20px; }
+ window#OSD .brightness-slider .icon {
+   color:#76a4e3;}
+    window#OSD .brightness-slider scale trough {
+      background: rgba(218, 218, 218, 0.1);
+      min-height: 1.2rem;
+      min-width: 16rem;
+      margin-right: 15px;
+      border-radius: 20px; }
+      window#OSD .brightness-slider scale trough slider {
+        background: none;
+        box-shadow: none;
+        border: none; }
+      window#OSD .brightness-slider scale trough highlight {
+        border-radius: 20px;
+        border: none; 
+        background: #76a4e3;}
+
