@@ -10,4 +10,5 @@ Simple WIP Dotfiles Using Ags
 
 ## Required Packages 
 - [aylurs-gtk-shell](https://github.com/Aylur/ags/)
-- Wlogout
+- wlogout
+- hyprlock, if you want a lock
