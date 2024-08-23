@@ -156,15 +156,6 @@ export function Media() {
     vexpand: false,
     children: players.as((p) => p.map(Player)),
   });
-
-  mediaContainer.hook(players, (self) => {
-    if (players.value.length > 0) {
-      self.class_name = "media__container";
-    } else {
-      self.class_name = "media__container--empty";
-    }
-  });
-
   return mediaContainer;
 }
 
