@@ -17,3 +17,11 @@ Simple WIP Dotfiles Using Ags
 
 ### For Wallpaper Keep your wallaper in ~/Pictures/wallpaper/default.jps
 
+##Some Important Keybinds 
+- Meta + Q  Killactive
+- Meta + Enter/Return  Terminal (Alacritty)
+- Meta + E  File Manager (Nemo)
+- Meta + B  Browser (Firefox)
+- Meta + R  App Launcher
+- Ctrl + Shift + R Reload Ags
+#### The default apps can be changed in binds.conf
