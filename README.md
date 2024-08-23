@@ -12,3 +12,8 @@ Simple WIP Dotfiles Using Ags
 - [aylurs-gtk-shell](https://github.com/Aylur/ags/)
 - wlogout
 - hyprlock, if you want a lock
+- hypridle
+- hyprpaper
+
+### For Wallpaper Keep your wallaper in ~/Pictures/wallpaper/default.jps
+
