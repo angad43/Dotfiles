@@ -15,7 +15,7 @@ Simple WIP Dotfiles Using Ags
 - hypridle
 - hyprpaper
 
-### For Wallpaper Keep your wallaper in ~/Pictures/wallpaper/default.jps
+### For Wallpaper Keep your wallaper in ~/Pictures/wallpaper/default.jpg
 
 ## Some Important Keybinds 
 - Meta + Q  Killactive
