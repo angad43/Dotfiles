@@ -451,12 +451,13 @@ window#NotificationMenu .notification .action-button {
 window#NotificationMenu .notification .action-button:hover {
     background-color: #0056b3; 
 }
-window#NotificationMenu .media__container{
-  padding: 10px;
-  background:   #222222;
-  border-radius: 10px;
-}
 
+window#NotificationMenu .player{
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom:3px;
+ background:#222222;
+}
 window#NotificationMenu .clear-button {
     background-color: #e74c3c; 
     color: #fff; 
