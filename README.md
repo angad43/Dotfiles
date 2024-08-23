@@ -17,7 +17,7 @@ Simple WIP Dotfiles Using Ags
 
 ### For Wallpaper Keep your wallaper in ~/Pictures/wallpaper/default.jps
 
-##Some Important Keybinds 
+## Some Important Keybinds 
 - Meta + Q  Killactive
 - Meta + Enter/Return  Terminal (Alacritty)
 - Meta + E  File Manager (Nemo)
