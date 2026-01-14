@@ -16,10 +16,8 @@ export default function Applauncher() {
     // Filtered binding
     const filteredList = searchText((text) => {
         if (text === "") {
-            // Increased slice to 50 to show more apps by default
             return apps.get_list().slice(0, 50)
         }
-        // Increased search results to 20
         return apps.fuzzy_query(text).slice(0, 20)
     })
 
@@ -77,12 +75,11 @@ export default function Applauncher() {
         halign={Gtk.Align.CENTER}
         orientation={Gtk.Orientation.VERTICAL}
         >
-        {/* 1. App List Moved to Top */}
         <scrolledwindow
         class="launcher-scroll"
         hscrollbarPolicy={Gtk.PolicyType.NEVER}
         vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
-        minContentHeight={450} // Slightly taller for more apps
+        minContentHeight={450}
         minContentWidth={400}
         >
         <box orientation={Gtk.Orientation.VERTICAL}>
@@ -92,15 +89,12 @@ export default function Applauncher() {
             <box spacing={10}>
             <image iconName={app.iconName} pixelSize={32} />
             <label label={app.name} />
-            {/* Removed the numbering label from here */}
             </box>
             </button>
         )}
         </For>
         </box>
         </scrolledwindow>
-
-        {/* 2. Search Bar Moved to Bottom */}
         <entry
         $={(ref) => (searchentry = ref)}
         class="launcher-search"
