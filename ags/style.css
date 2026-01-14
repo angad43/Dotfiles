@@ -1,0 +1,219 @@
+@define-color bg_dark #141414;
+@define-color bg_card #1e1e2e;
+@define-color accent #b0b0b0;
+@define-color surface #313244;
+@define-color surface_hover #45475a;
+@define-color error_red rgba(255, 0, 0, 1);
+
+/* --- Bar --- */
+window.Bar {
+  background-color: @bg_dark;
+  min-height: 35px;
+}
+
+.clock {
+  color: white;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  margin: 3px;
+  border-radius: 20px;
+}
+
+/* --- Workspaces --- */
+.workspaces-pill-container {
+  background-color: #464646;
+  border-radius: 10px;
+  min-height: 25px;
+  padding: 0px 10px;
+}
+
+.workspace-dot {
+  all: unset;
+  min-height: 16px;
+  min-width: 16px;
+  border-radius: 5px;
+  background-color: #132323;
+  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.workspace-dot.active {
+  background-color: @accent;
+  min-width: 30px;
+}
+
+.workspace-dot:hover {
+  background-color: @surface_hover;
+}
+.launcher-button {
+  all: unset; /* Nukes the GTK system theme */
+  padding: 0px 12px;
+  margin: 3px;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent; /* Or @surface if you want a subtle background */
+  transition: all 200ms ease;
+}
+
+.launcher-button:hover {
+  background-color: @surface_hover;
+}
+
+.launcher-button label {
+  font-size: 18px; /* Adjust size of the icon 󰣇 */
+}
+/* --- App Launcher --- */
+window#launcher {
+  background-color: transparent;
+}
+
+.launcher-content {
+  background-color: @bg_dark;
+  border: 1px solid @surface;
+  border-radius: 16px;
+  padding: 20px;
+  min-width: 500px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.launcher-content entry {
+  all: unset;
+  background-color: @surface;
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  margin-top: 15px;
+}
+
+.app-item {
+  all: unset;
+  padding: 10px;
+  border-radius: 10px;
+  color: #cdd6f4;
+  transition: background 0.2s;
+}
+
+.app-item:hover, .app-item:focus {
+  background-color: @surface_hover;
+}
+
+.launcher-scroll scrollbar,
+.launcher-scroll scrollbar slider,
+.launcher-scroll scrollbar trough {
+  background: transparent;
+  border: none;
+  opacity: 0;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* --- Notifications --- */
+window.NotificationPopups {
+  all: unset;
+}
+
+.Notification {
+  border-radius: 13px;
+  background-color: @bg_card;
+  margin: 8px 16px;
+  box-shadow: 2px 3px 8px 0 rgba(0, 0, 0, 0.4);
+  border: 1pt solid rgba(255, 255, 255, 0.03);
+}
+
+.Notification.critical {
+  border: 1pt solid rgba(255, 0, 0, 0.4);
+}
+
+.Notification.critical .header .app-name { color: rgba(255, 0, 0, 0.8); }
+.Notification.critical .header .app-icon { color: rgba(255, 0, 0, 0.6); }
+
+.Notification .header {
+  padding: 8px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.Notification .header .app-icon { margin: 0 6px; }
+.Notification .header .app-name { margin-right: 5px; font-weight: bold; }
+.Notification .header .app-name:first-child { margin-left: 6px; }
+.Notification .header .time { margin: 0 6px; }
+
+.Notification .header button {
+  padding: 3px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.Notification separator {
+  margin: 0 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.Notification .content {
+  margin: 16px;
+  margin-top: 8px;
+}
+
+.Notification .content .summary {
+  font-size: 1.2em;
+  color: white;
+}
+
+.Notification .content .body {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.Notification .content .image {
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  margin-right: 8px;
+  border-radius: 9px;
+  min-width: 100px;
+  min-height: 100px;
+  background-size: cover;
+  background-position: center;
+}
+
+.Notification .actions {
+  margin: 16px;
+  margin-top: 0;
+}
+
+.Notification .actions button {
+  margin: 0 5px;
+}
+
+.Notification .actions button:first-child { margin-left: 0; }
+.Notification .actions button:last-child { margin-right: 0; }
+/* --- Combined System Status Pill --- */
+.system-status-pill {
+  all: unset;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 5px 15px;
+  margin: 3px 5px;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.system-status-pill:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.system-status-pill box {
+  /* Ensures items inside are centered vertically */
+  align-items: center;
+}
+
+.system-status-pill separator {
+  background-color: rgba(255, 255, 255, 0.2);
+  min-width: 1px;
+  margin: 4px 0px;
+}
+
+.system-status-pill icon {
+  -gtk-icon-size: 16px;
+}
+
+.system-status-pill label {
+  font-size: 13px;
+  font-weight: 500;
+}

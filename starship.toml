@@ -1,0 +1,71 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](#005f87)\
+${custom.terminal}\
+[](bg:#0087af fg:#005f87)\
+$directory\
+[](bg:#00afaf fg:#0087af)\
+$git_branch\
+$git_status\
+[](bg:#00d7d7 fg:#00afaf)\
+$c$golang$nodejs$rust$java\
+[](fg:#00d7d7)\
+$fill\
+[](fg:#005f87)\
+$time\
+[](fg:#005f87)
+$character"""
+
+[custom.terminal]
+command = "echo '  '" 
+when = "true"
+style = "bg:#005f87 fg:#ffffff"
+format = "[$output]($style)"
+
+[directory]
+style = "bg:#0087af fg:#ffffff"
+format = "[ $path ]($style)"
+truncation_length = 3
+
+[git_branch]
+symbol = ""
+style = "bg:#00afaf fg:#000000"
+format = "[ $symbol $branch ]($style)"
+
+[git_status]
+style = "bg:#00afaf fg:#000000"
+format = "[$all_status$ahead_behind ]($style)"
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+time_format = "%I:%M %p"
+style = "bg:#005f87 fg:#ffffff"
+format = '[  $time ]($style)'
+
+[character]
+success_symbol = "[╰─󰁔](bold cyan) "
+error_symbol = "[╰─󰁔](bold red) "
+
+[c]
+symbol = " "
+style = "bg:#00d7d7 fg:#000000"
+format = '[ $symbol($version) ]($style)'
+
+[nodejs]
+symbol = " "
+style = "bg:#00d7d7 fg:#000000"
+format = '[ $symbol($version) ]($style)'
+
+[rust]
+symbol = " "
+style = "bg:#00d7d7 fg:#000000"
+format = '[ $symbol($version) ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#00d7d7 fg:#000000"
+format = '[ $symbol($version) ]($style)'
