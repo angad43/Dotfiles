@@ -280,7 +280,7 @@ spawn-sh-at-startup "dbus-update-activation-environment --all"
 spawn-sh-at-startup "gnome-keyring-daemon --start --components=secrets --replace"
 spawn-sh-at-startup "swww-daemon && swww img /home/nitroa/.config/wallpaper/wall1.jpg"
 spawn-sh-at-startup "swww-daemon -n overlay && swww img -n overlay /home/nitroa/.config/wallpaper/blurredwall1.jpg"
-spawn-at-startup "quickshell"
+spawn-sh-at-startup "ags run"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
