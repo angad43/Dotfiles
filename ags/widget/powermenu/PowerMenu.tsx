@@ -1,5 +1,6 @@
 import app from "ags/gtk4/app"
 import { Astal, Gtk } from "ags/gtk4"
+import { exec } from "ags/process"
 
 export default function PowerMenu() {
     const { TOP, RIGHT } = Astal.WindowAnchor
@@ -13,7 +14,12 @@ export default function PowerMenu() {
         <button
         class="menu-item"
         onClicked={() => {
-            console.log(`Executing: ${command}`)
+            // This is the part that actually runs the command
+            try {
+                exec(command)
+            } catch (err) {
+                console.error(`Failed to execute ${command}:`, err)
+            }
             close()
         }}>
         <box spacing={12} halign={Gtk.Align.START}>
