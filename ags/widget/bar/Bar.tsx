@@ -11,7 +11,10 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
     const win = app.get_window("launcher")
     if (win) win.visible = !win.visible
   }
-
+  const togglePowerMenu = () => {
+    const win = app.get_window("powermenu")
+    if (win) win.visible = !win.visible
+  }
   return (
     <window
     visible
@@ -24,7 +27,6 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
     >
     <centerbox cssName="centerbox">
     <box $type="start">
-    {/* Launcher Toggle Button */}
     <button
     class="launcher-button"
     onClicked={toggleLauncher}
@@ -40,6 +42,12 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
     </box>
     <box $type="end">
     <SystemStatus />
+    <button
+    class="powermenu-toggle"
+    onClicked={togglePowerMenu}
+    >
+    <label label="󰐥" />
+    </button>
     </box>
     </centerbox>
     </window>

@@ -4,6 +4,7 @@ import { For, createBinding } from "ags";
 
 export function Workspaces() {
     const niri = Niri.get_default();
+
     const workspaces = createBinding(niri, "workspaces").as(ws =>
     [...ws]
     .sort((a, b) => a.id - b.id)

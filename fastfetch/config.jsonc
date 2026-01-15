@@ -1,0 +1,87 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/art.txt",
+    "padding": {
+      "top": 2,
+      "right": 4
+    },
+    "color": {
+      "1": "white"
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "key": {
+      "type": "icon"
+    }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "┌─────────────── \u001b[1mSystem Info\u001b[0m ───────────────┐"
+    },
+    {
+      "type": "os",
+      "key": "󰣇",
+      "keyColor": "blue",
+      "format": "{3} {10}"
+    },
+    {
+      "type": "kernel",
+      "key": "󰒋",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "packages",
+      "key": "󰏖",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "shell",
+      "key": "󱆃",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "terminal",
+      "key": "󰆍",
+      "keyColor": "green"
+    },
+    {
+      "type": "custom",
+      "format": "├────────────────── \u001b[1mHardware\u001b[0m ──────────────────┤"
+    },
+    {
+      "type": "cpu",
+      "key": "󰻠",
+      "keyColor": "red",
+      "showPeCoreCount": true
+    },
+    {
+      "type": "gpu",
+      "key": "󰢮",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "memory",
+      "key": "󰍛",
+      "keyColor": "blue",
+      "format": "{1} / {2} ({3})"
+    },
+    {
+      "type": "disk",
+      "key": "󰋊",
+      "keyColor": "yellow",
+      "folders": "/"
+    },
+    {
+      "type": "custom",
+      "format": "└─────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "colors",
+      "symbol": "circle"
+    }
+  ]
+}

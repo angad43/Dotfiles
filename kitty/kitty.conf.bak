@@ -1,0 +1,74 @@
+# --- Font Configuration ---
+# 1. Set your main font (Make sure you have this installed!)
+font_family      JetBrainsMono Nerd Font
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+
+# 2. Force Kitty to use Nerd Font symbols for Powerline ranges
+# This fixes the "solid block" or "missing symbol" issue
+symbol_map U+E0A0-U+E0A3,U+E0C0-U+E0C7 PowerlineSymbols
+symbol_map U+E0B0-U+E0B3,U+E0B4-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4 Nerd Font Symbols
+
+# Adjust line height for better readability with JetBrains Mono
+modify_font underline_position -2
+modify_font underline_thickness 150%
+modify_font cell_height 110%
+
+# --- Darkened Color Palette ---
+# Background is now a deeper #0f1016 (standard was #1a1b26)
+foreground              #a9b1d6
+background              #0f1016
+selection_foreground    #0f1016
+selection_background    #3b4261
+
+# Cursor colors
+cursor                  #c0caf5
+cursor_text_color       #0f1016
+
+# URL underline color
+url_color               #73daca
+
+# Window Borders (Darker inactive state)
+active_border_color     #7aa2f7
+inactive_border_color   #16161e
+
+# Tab bar (Darker background)
+active_tab_foreground   #0f1016
+active_tab_background   #7aa2f7
+inactive_tab_foreground #414868
+inactive_tab_background #16161e
+
+# --- Terminal Colors (Deepened) ---
+
+# black
+color0 #0f1016
+color8 #32344a
+
+# red
+color1 #f7768e
+color9 #ff7a93
+
+# green
+color2  #9ece6a
+color10 #b9f27c
+
+# yellow
+color3  #e0af68
+color11 #ff9e64
+
+# blue
+color4  #7aa2f7
+color12 #7da6ff
+
+# magenta
+color5  #bb9af7
+color13 #d2b3ff
+
+# cyan
+color6  #7dcfff
+color14 #0db9d7
+
+# white
+color7  #787c99
+color15 #acb0d0

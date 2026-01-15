@@ -6,21 +6,27 @@ import { createBinding, For, createState, onCleanup } from "ags"
 
 export default function NotificationPopups() {
     const monitors = createBinding(app, "monitors")
-
     const notifd = AstalNotifd.get_default()
 
     const [notifications, setNotifications] = createState(
         new Array<AstalNotifd.Notification>(),
     )
 
-    const notifiedHandler = notifd.connect("notified", (_, id, replaced) => {
+    const notifiedHandler = notifd.connect("notified", (_, id) => {
         const notification = notifd.get_notification(id)
+        if (!notification) return
 
-        if (replaced && notifications.get().some((n) => n.id === id)) {
-            setNotifications((ns) => ns.map((n) => (n.id === id ? notification : n)))
-        } else {
-            setNotifications((ns) => [notification, ...ns])
-        }
+            setNotifications((ns) => [notification, ...ns.filter((n) => n.id !== id)])
+
+            const duration = notification.expire_timeout > 0
+            ? notification.expire_timeout
+            : 5000
+
+            if (duration > 0) {
+                setTimeout(() => {
+                    setNotifications((ns) => ns.filter((n) => n.id !== id))
+                }, duration)
+            }
     })
 
     const resolvedHandler = notifd.connect("resolved", (_, id) => {
@@ -36,6 +42,7 @@ export default function NotificationPopups() {
         <For each={monitors}>
         {(monitor) => (
             <window
+            // REMOVED: key={...} property was causing the Gjs-CRITICAL error
             $={(self) => onCleanup(() => self.destroy())}
             class="NotificationPopups"
             gdkmonitor={monitor}
@@ -44,7 +51,12 @@ export default function NotificationPopups() {
             >
             <box orientation={Gtk.Orientation.VERTICAL}>
             <For each={notifications}>
-            {(notification) => <Notification notification={notification} />}
+            {(notification) => (
+                <Notification
+                key={notification.id} // Key is still needed here for list items
+                notification={notification}
+                />
+            )}
             </For>
             </box>
             </window>

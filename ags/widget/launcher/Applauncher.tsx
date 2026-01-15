@@ -13,7 +13,6 @@ export default function Applauncher() {
     const apps = new AstalApps.Apps()
     const [searchText, setSearchText] = createState("")
 
-    // Filtered binding
     const filteredList = searchText((text) => {
         if (text === "") {
             return apps.get_list().slice(0, 50)
@@ -67,7 +66,6 @@ export default function Applauncher() {
         >
         <Gtk.EventControllerKey onKeyPressed={onKey} />
         <Gtk.GestureClick onPressed={onClick} />
-
         <box
         $={(ref) => (contentbox = ref)}
         class="launcher-content"

@@ -1,5 +1,5 @@
 @define-color bg_dark #141414;
-@define-color bg_card #1e1e2e;
+@define-color bg_card #1e1e1e;
 @define-color accent #b0b0b0;
 @define-color surface #313244;
 @define-color surface_hover #45475a;
@@ -22,7 +22,7 @@ window.Bar {
 
 /* --- Workspaces --- */
 .workspaces-pill-container {
-  background-color: #464646;
+  background-color: transparent;
   border-radius: 10px;
   min-height: 25px;
   padding: 0px 10px;
@@ -33,7 +33,7 @@ window.Bar {
   min-height: 16px;
   min-width: 16px;
   border-radius: 5px;
-  background-color: #132323;
+  background-color: #535353;
   transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -46,12 +46,12 @@ window.Bar {
   background-color: @surface_hover;
 }
 .launcher-button {
-  all: unset; /* Nukes the GTK system theme */
+  all: unset;
   padding: 0px 12px;
   margin: 3px;
   border-radius: 8px;
   color: white;
-  background-color: transparent; /* Or @surface if you want a subtle background */
+  background-color: transparent;
   transition: all 200ms ease;
 }
 
@@ -60,7 +60,7 @@ window.Bar {
 }
 
 .launcher-button label {
-  font-size: 18px; /* Adjust size of the icon 󰣇 */
+  font-size: 22px;
 }
 /* --- App Launcher --- */
 window#launcher {
@@ -183,6 +183,7 @@ window.NotificationPopups {
 
 .Notification .actions button:first-child { margin-left: 0; }
 .Notification .actions button:last-child { margin-right: 0; }
+
 /* --- Combined System Status Pill --- */
 .system-status-pill {
   all: unset;
@@ -199,14 +200,7 @@ window.NotificationPopups {
 }
 
 .system-status-pill box {
-  /* Ensures items inside are centered vertically */
   align-items: center;
-}
-
-.system-status-pill separator {
-  background-color: rgba(255, 255, 255, 0.2);
-  min-width: 1px;
-  margin: 4px 0px;
 }
 
 .system-status-pill icon {
@@ -216,4 +210,41 @@ window.NotificationPopups {
 .system-status-pill label {
   font-size: 13px;
   font-weight: 500;
+}
+.powermenu-toggle {
+  all: unset;
+  padding: 0px 12px;
+  margin: 3px;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent;
+  transition: all 200ms ease;
+}
+
+.powermenu-toggle:hover {
+  background-color: @surface_hover;
+}
+
+.powermenu-toggle label {
+  font-size: 18px;
+}
+
+window.PowerMenuDropdown {
+  background-color: @bg_dark;
+  border: 1px solid @surface;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.menu-item {
+  all: unset;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: @text_dim;
+  transition: background 0.2s;
+}
+
+.menu-item:hover {
+  background-color: @surface_hover;
+  color: @text_main;
 }
