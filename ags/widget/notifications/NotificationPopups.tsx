@@ -12,23 +12,16 @@ export default function NotificationPopups() {
         new Array<AstalNotifd.Notification>(),
     )
 
+    // Capture new notifications
     const notifiedHandler = notifd.connect("notified", (_, id) => {
-        const notification = notifd.get_notification(id)
-        if (!notification) return
-
-            setNotifications((ns) => [notification, ...ns.filter((n) => n.id !== id)])
-
-            const duration = notification.expire_timeout > 0
-            ? notification.expire_timeout
-            : 5000
-
-            if (duration > 0) {
-                setTimeout(() => {
-                    setNotifications((ns) => ns.filter((n) => n.id !== id))
-                }, duration)
-            }
+        const n = notifd.get_notification(id)
+        if (n) {
+            // Add new to top, remove old duplicate if it exists
+            setNotifications((ns) => [n, ...ns.filter((i) => i.id !== id)])
+        }
     })
 
+    // Remove from state when dismissed
     const resolvedHandler = notifd.connect("resolved", (_, id) => {
         setNotifications((ns) => ns.filter((n) => n.id !== id))
     })
@@ -40,27 +33,28 @@ export default function NotificationPopups() {
 
     return (
         <For each={monitors}>
-        {(monitor) => (
-            <window
-            // REMOVED: key={...} property was causing the Gjs-CRITICAL error
-            $={(self) => onCleanup(() => self.destroy())}
-            class="NotificationPopups"
-            gdkmonitor={monitor}
-            visible={notifications((ns) => ns.length > 0)}
-            anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
-            >
-            <box orientation={Gtk.Orientation.VERTICAL}>
-            <For each={notifications}>
-            {(notification) => (
-                <Notification
-                key={notification.id} // Key is still needed here for list items
-                notification={notification}
-                />
-            )}
-            </For>
-            </box>
-            </window>
-        )}
+        {(monitor) => {
+            // Fix: monitor.get_connector() is the correct method in GTK4
+            const monitorName = monitor.get_connector() || "default"
+
+            return (
+                <window
+                name={`notifications-${monitorName}`}
+                $={(self) => onCleanup(() => self.destroy())}
+                class="NotificationWindow"
+                gdkmonitor={monitor}
+                visible={notifications((ns) => ns.length > 0)}
+                exclusivity={Astal.Exclusivity.NONE}
+                anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
+                >
+                <box orientation={Gtk.Orientation.VERTICAL} class="popup-container">
+                <For each={notifications}>
+                {(n) => <Notification key={n.id} notification={n} />}
+                </For>
+                </box>
+                </window>
+            )
+        }}
         </For>
     )
 }

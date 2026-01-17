@@ -4,50 +4,65 @@ import Adw from "gi://Adw"
 import GLib from "gi://GLib"
 import AstalNotifd from "gi://AstalNotifd"
 import Pango from "gi://Pango"
+import { createState, onMount } from "ags"
 
-function isIcon(icon?: string | null) {
+const isIcon = (icon?: string | null) => {
     const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default()!)
     return icon && iconTheme.has_icon(icon)
 }
 
-function fileExists(path: string) {
-    return GLib.file_test(path, GLib.FileTest.EXISTS)
-}
+const fileExists = (path: string) => GLib.file_test(path, GLib.FileTest.EXISTS)
 
-function time(time: number, format = "%H:%M") {
-    return GLib.DateTime.new_from_unix_local(time).format(format)!
-}
+const time = (t: number, format = "%H:%M") =>
+GLib.DateTime.new_from_unix_local(t).format(format)!
 
-function urgency(n: AstalNotifd.Notification) {
-    const { LOW, NORMAL, CRITICAL } = AstalNotifd.Urgency
-    switch (n.urgency) {
-        case LOW:
-            return "low"
-        case CRITICAL:
-            return "critical"
-        case NORMAL:
-        default:
+const urgency = (n: AstalNotifd.Notification) => {
+    const { LOW, CRITICAL } = AstalNotifd.Urgency
+    if (n.urgency === LOW) return "low"
+        if (n.urgency === CRITICAL) return "critical"
             return "normal"
+}
+
+export default function Notification({ notification: n }: { notification: AstalNotifd.Notification }) {
+    const [revealed, setRevealed] = createState(false)
+
+    // Helper to animate out before destroying
+    const dismiss = () => {
+        setRevealed(false)
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 300, () => {
+            n.dismiss()
+            return GLib.SOURCE_REMOVE
+        })
     }
-}
 
-interface NotificationProps {
-    notification: AstalNotifd.Notification
-}
+    onMount(() => {
+        // Slide in
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 10, () => {
+            setRevealed(true)
+            return GLib.SOURCE_REMOVE
+        })
 
-export default function Notification({ notification: n }: NotificationProps) {
+        // Auto-dismiss based on timeout
+        const duration = n.expire_timeout > 0 ? n.expire_timeout : 5000
+        if (duration > 0) {
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, duration, () => {
+                dismiss()
+                return GLib.SOURCE_REMOVE
+            })
+        }
+    })
+
     return (
+        <revealer
+        revealChild={revealed}
+        transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+        transitionDuration={300}>
         <Adw.Clamp maximumSize={400}>
-        <box
-        widthRequest={400}
-        class={`Notification ${urgency(n)}`}
-        orientation={Gtk.Orientation.VERTICAL}
-        >
-        <box class="header">
+        <box orientation={Gtk.Orientation.VERTICAL} class={`Notification ${urgency(n)}`}>
+        <box class="header" spacing={8}>
         {(n.appIcon || isIcon(n.desktopEntry)) && (
             <image
             class="app-icon"
-            visible={Boolean(n.appIcon || n.desktopEntry)}
             iconName={n.appIcon || n.desktopEntry}
             />
         )}
@@ -63,31 +78,25 @@ export default function Notification({ notification: n }: NotificationProps) {
         halign={Gtk.Align.END}
         label={time(n.time)}
         />
-        <button onClicked={() => n.dismiss()}>
+        <button class="close-button" onClicked={dismiss}>
         <image iconName="window-close-symbolic" />
         </button>
         </box>
+
         <Gtk.Separator visible />
-        <box class="content">
+
+        <box class="content" spacing={12}>
         {n.image && fileExists(n.image) && (
             <image valign={Gtk.Align.START} class="image" file={n.image} />
         )}
-        {n.image && isIcon(n.image) && (
-            <box valign={Gtk.Align.START} class="icon-image">
-            <image
-            iconName={n.image}
-            halign={Gtk.Align.CENTER}
-            valign={Gtk.Align.CENTER}
-            />
-            </box>
-        )}
-        <box orientation={Gtk.Orientation.VERTICAL}>
+        <box orientation={Gtk.Orientation.VERTICAL} hexpand>
         <label
         class="summary"
         halign={Gtk.Align.START}
         xalign={0}
         label={n.summary}
         ellipsize={Pango.EllipsizeMode.END}
+        css="font-weight: bold;"
         />
         {n.body && (
             <label
@@ -96,22 +105,23 @@ export default function Notification({ notification: n }: NotificationProps) {
             useMarkup
             halign={Gtk.Align.START}
             xalign={0}
-            justify={Gtk.Justification.FILL}
             label={n.body}
             />
         )}
         </box>
         </box>
+
         {n.actions.length > 0 && (
-            <box class="actions">
+            <box class="actions" spacing={5}>
             {n.actions.map(({ label, id }) => (
                 <button hexpand onClicked={() => n.invoke(id)}>
-                <label label={label} halign={Gtk.Align.CENTER} hexpand />
+                <label label={label} />
                 </button>
             ))}
             </box>
         )}
         </box>
         </Adw.Clamp>
+        </revealer>
     )
 }
