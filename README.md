@@ -1,6 +1,7 @@
 # Dotfiles
 This is my personal dotfiles for Niri and AGS
-##Images 
+
+## Images 
 <img width="1920" height="1200" alt="Screenshot2026-01-24 12-40-38" src="https://github.com/user-attachments/assets/b009f226-96be-45cd-920c-23c2a75e2e85" />
 <img width="1920" height="1200" alt="Screenshot2026-01-24 12-41-16" src="https://github.com/user-attachments/assets/48aef155-28b8-40bb-a809-a61326ce5acd" />
 <img width="1920" height="1199" alt="Screenshot2026-01-24 12-42-02" src="https://github.com/user-attachments/assets/2fcca6cc-3888-4070-96ff-b634ae042183" />
