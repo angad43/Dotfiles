@@ -1,40 +1,41 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Use the forward slash '' and '' for the angled design seen in your image
 format = """
-[](#005f87)\
+[](#6a6a6a)\
 ${custom.terminal}\
-[](bg:#0087af fg:#005f87)\
+[](bg:#969696 fg:#6a6a6a)\
 $directory\
-[](bg:#00afaf fg:#0087af)\
+[](bg:#c1c1c1 fg:#969696)\
 $git_branch\
 $git_status\
-[](bg:#00d7d7 fg:#00afaf)\
+[](bg:#f1f1f1 fg:#c1c1c1)\
 $c$golang$nodejs$rust$java\
-[](fg:#00d7d7)\
+[](fg:#f1f1f1)\
 $fill\
-[](fg:#005f87)\
+[](fg:#6a6a6a)\
 $time\
-[](fg:#005f87)
-$character"""
+[](fg:#6a6a6a)
+[](fg:#6a6a6a) $character"""
 
 [custom.terminal]
-command = "echo '  '" 
+command = "echo ' '"
 when = "true"
-style = "bg:#005f87 fg:#ffffff"
-format = "[$output]($style)"
+style = "bg:#6a6a6a fg:#ffffff"
+format = "[ $output]($style)"
 
 [directory]
-style = "bg:#0087af fg:#ffffff"
+style = "bg:#969696 fg:#000000"
 format = "[ $path ]($style)"
 truncation_length = 3
 
 [git_branch]
 symbol = ""
-style = "bg:#00afaf fg:#000000"
+style = "bg:#c1c1c1 fg:#000000"
 format = "[ $symbol $branch ]($style)"
 
 [git_status]
-style = "bg:#00afaf fg:#000000"
+style = "bg:#c1c1c1 fg:#000000"
 format = "[$all_status$ahead_behind ]($style)"
 
 [fill]
@@ -43,29 +44,29 @@ symbol = " "
 [time]
 disabled = false
 time_format = "%I:%M %p"
-style = "bg:#005f87 fg:#ffffff"
+style = "bg:#6a6a6a fg:#ffffff"
 format = '[  $time ]($style)'
 
 [character]
-success_symbol = "[╰─󰁔](bold cyan) "
-error_symbol = "[╰─󰁔](bold red) "
+success_symbol = "[=>](bold cyan) "
+error_symbol = "[=>](bold red) "
 
 [c]
 symbol = " "
-style = "bg:#00d7d7 fg:#000000"
+style = "bg:#f1f1f1 fg:#000000"
 format = '[ $symbol($version) ]($style)'
 
 [nodejs]
 symbol = " "
-style = "bg:#00d7d7 fg:#000000"
+style = "bg:#f1f1f1 fg:#000000"
 format = '[ $symbol($version) ]($style)'
 
 [rust]
 symbol = " "
-style = "bg:#00d7d7 fg:#000000"
+style = "bg:#f1f1f1 fg:#000000"
 format = '[ $symbol($version) ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#00d7d7 fg:#000000"
+style = "bg:#f1f1f1 fg:#000000"
 format = '[ $symbol($version) ]($style)'
