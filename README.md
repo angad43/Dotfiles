@@ -19,7 +19,10 @@ This is my personal dotfiles for Niri and AGS
 1. Clone the repository:
    ```bash
    git clone https://github.com/angad43/Dotfiles
-   cd 
+
 2. Move the configs:
    ```bash
    mv /Dotfiles/*  ~/.config/
+
+#### Use Super + Shift + / to bring up the keybinds 
+   
