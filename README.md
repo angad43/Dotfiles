@@ -23,7 +23,7 @@ This is my personal dotfiles for Niri and AGS
 
 2. Move the configs:
    ```bash
-   mv /Dotfiles/*  ~/.config/
+   mv Dotfiles/*  ~/.config/
 
 #### Use Super + Shift + / to bring up the keybinds 
    
