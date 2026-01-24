@@ -1,20 +1,16 @@
 import app from "ags/gtk4/app"
 import { Astal, Gtk } from "ags/gtk4"
 import { exec } from "ags/process"
-
 export default function PowerMenu() {
     const { TOP, RIGHT } = Astal.WindowAnchor
-
     const close = () => {
         const win = app.get_window("powermenu")
         if (win) win.visible = false
     }
-
     const MenuButton = (label: string, icon: string, command: string) => (
         <button
         class="menu-item"
         onClicked={() => {
-            // This is the part that actually runs the command
             try {
                 exec(command)
             } catch (err) {
@@ -28,7 +24,6 @@ export default function PowerMenu() {
         </box>
         </button>
     )
-
     return (
         <window
         name="powermenu"
@@ -40,7 +35,6 @@ export default function PowerMenu() {
         exclusivity={Astal.Exclusivity.NORMAL}
         keymode={Astal.Keymode.ON_DEMAND}
         application={app}>
-
         <box orientation={Gtk.Orientation.VERTICAL} class="menu-container">
         {MenuButton("Lock", "󰌾", "swaylock")}
         {MenuButton("Logout", "󰍃", "niri msg action quit")}

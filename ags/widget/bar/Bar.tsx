@@ -3,10 +3,10 @@ import { Astal, Gtk, Gdk } from "ags/gtk4"
 import { Clock } from "./items/clock"
 import { Workspaces } from "./items/workspace"
 import { SystemStatus } from "./items/status"
+import { MediaLabel } from "./items/MediaLabel"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
-
   const toggleLauncher = () => {
     const win = app.get_window("launcher")
     if (win) win.visible = !win.visible
@@ -33,20 +33,19 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
     >
     <label label="󰣇" />
     </button>
-
     <Workspaces gdkmonitor={gdkmonitor} />
     </box>
-
     <box $type="center">
     <Clock />
     </box>
     <box $type="end">
+    <MediaLabel />
     <SystemStatus />
     <button
     class="powermenu-toggle"
     onClicked={togglePowerMenu}
     >
-    <label label="󰐥" />
+    <image iconName="system-shutdown-symbolic" />
     </button>
     </box>
     </centerbox>

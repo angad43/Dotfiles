@@ -4,12 +4,10 @@ import AstalApps from "gi://AstalApps"
 import Graphene from "gi://Graphene"
 
 const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
-
 export default function Applauncher() {
     let contentbox: Gtk.Box
     let searchentry: Gtk.Entry
     let win: Astal.Window
-
     const apps = new AstalApps.Apps()
     const [searchText, setSearchText] = createState("")
 
@@ -19,27 +17,23 @@ export default function Applauncher() {
         }
         return apps.fuzzy_query(text).slice(0, 20)
     })
-
     function launch(app?: AstalApps.Application) {
         if (app) {
             win.hide()
             app.launch()
         }
     }
-
     function onKey(_e: Gtk.EventControllerKey, keyval: number, _: number, mod: number) {
         if (keyval === Gdk.KEY_Escape) {
             win.visible = false
             return
         }
-
         if (keyval === Gdk.KEY_Return || keyval === Gdk.KEY_KP_Enter) {
             const first = filteredList.get()[0]
             if (first) launch(first)
                 return
         }
     }
-
     function onClick(_e: Gtk.GestureClick, _: number, x: number, y: number) {
         const [, rect] = contentbox.compute_bounds(win)
         const position = new Graphene.Point({ x, y })
@@ -47,7 +41,6 @@ export default function Applauncher() {
             win.visible = false
         }
     }
-
     return (
         <window
         $={(ref) => (win = ref)}

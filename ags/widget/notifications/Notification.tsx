@@ -10,48 +10,52 @@ const isIcon = (icon?: string | null) => {
     const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default()!)
     return icon && iconTheme.has_icon(icon)
 }
-
 const fileExists = (path: string) => GLib.file_test(path, GLib.FileTest.EXISTS)
 
 const time = (t: number, format = "%H:%M") =>
 GLib.DateTime.new_from_unix_local(t).format(format)!
-
 const urgency = (n: AstalNotifd.Notification) => {
     const { LOW, CRITICAL } = AstalNotifd.Urgency
     if (n.urgency === LOW) return "low"
         if (n.urgency === CRITICAL) return "critical"
             return "normal"
 }
-
-export default function Notification({ notification: n }: { notification: AstalNotifd.Notification }) {
+export default function Notification({
+    notification: n,
+    onClose
+}: {
+    notification: AstalNotifd.Notification,
+    onClose: () => void
+}) {
     const [revealed, setRevealed] = createState(false)
-
-    // Helper to animate out before destroying
-    const dismiss = () => {
+    const hidePopup = () => {
+        setRevealed(false)
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 300, () => {
+            onClose()
+            return GLib.SOURCE_REMOVE
+        })
+    }
+    const dismissSystem = () => {
         setRevealed(false)
         GLib.timeout_add(GLib.PRIORITY_DEFAULT, 300, () => {
             n.dismiss()
             return GLib.SOURCE_REMOVE
         })
     }
-
     onMount(() => {
-        // Slide in
         GLib.timeout_add(GLib.PRIORITY_DEFAULT, 10, () => {
             setRevealed(true)
             return GLib.SOURCE_REMOVE
         })
 
-        // Auto-dismiss based on timeout
         const duration = n.expire_timeout > 0 ? n.expire_timeout : 5000
         if (duration > 0) {
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, duration, () => {
-                dismiss()
+                hidePopup()
                 return GLib.SOURCE_REMOVE
             })
         }
     })
-
     return (
         <revealer
         revealChild={revealed}
@@ -61,10 +65,7 @@ export default function Notification({ notification: n }: { notification: AstalN
         <box orientation={Gtk.Orientation.VERTICAL} class={`Notification ${urgency(n)}`}>
         <box class="header" spacing={8}>
         {(n.appIcon || isIcon(n.desktopEntry)) && (
-            <image
-            class="app-icon"
-            iconName={n.appIcon || n.desktopEntry}
-            />
+            <image class="app-icon" iconName={n.appIcon || n.desktopEntry} />
         )}
         <label
         class="app-name"
@@ -72,19 +73,12 @@ export default function Notification({ notification: n }: { notification: AstalN
         ellipsize={Pango.EllipsizeMode.END}
         label={n.appName || "Unknown"}
         />
-        <label
-        class="time"
-        hexpand
-        halign={Gtk.Align.END}
-        label={time(n.time)}
-        />
-        <button class="close-button" onClicked={dismiss}>
+        <label class="time" hexpand halign={Gtk.Align.END} label={time(n.time)} />
+        <button class="close-button" onClicked={dismissSystem}>
         <image iconName="window-close-symbolic" />
         </button>
         </box>
-
         <Gtk.Separator visible />
-
         <box class="content" spacing={12}>
         {n.image && fileExists(n.image) && (
             <image valign={Gtk.Align.START} class="image" file={n.image} />
@@ -99,18 +93,10 @@ export default function Notification({ notification: n }: { notification: AstalN
         css="font-weight: bold;"
         />
         {n.body && (
-            <label
-            class="body"
-            wrap
-            useMarkup
-            halign={Gtk.Align.START}
-            xalign={0}
-            label={n.body}
-            />
+            <label class="body" wrap useMarkup halign={Gtk.Align.START} xalign={0} label={n.body} />
         )}
         </box>
         </box>
-
         {n.actions.length > 0 && (
             <box class="actions" spacing={5}>
             {n.actions.map(({ label, id }) => (
