@@ -1,0 +1,31 @@
+ignore-empty-password
+show-failed-attempts
+image=~/.config/wallpaper/lockwall.png
+scaling=fill
+color=141414
+inside-color=141414
+inside-clear-color=141414
+inside-ver-color=141414
+inside-wrong-color=141414
+ring-color=6a6a6a
+ring-clear-color=f1f1f1
+ring-ver-color=f1f1f1
+ring-wrong-color=ff0000
+key-hl-color=f1f1f1
+bs-hl-color=ff0000
+text-color=f1f1f1
+text-clear-color=f1f1f1
+text-ver-color=141414
+text-wrong-color=141414
+indicator
+indicator-radius=120
+indicator-thickness=12
+indicator-caps-lock
+line-color=00000000
+separator-color=00000000
+font="JetBrainsMono Nerd Font"
+font-size=24
+clock
+timestr=%-I:%M %p
+datestr=
+clock-color=f1f1f1

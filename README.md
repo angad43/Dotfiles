@@ -12,7 +12,7 @@ This is my personal dotfiles for Niri and AGS
 ### Prerequisites
 * **Dependencies (Arch):**
     ```bash
-    yay -S aylurs-gtk-shell-git libastal-4-git libastal-battery-git libastal-git libastal-mpris-git libastal-niri-git libastal-powerprofiles-git libastal-wireplumber-git libastal-apps-git libastal-bluetooth-git libastal-io-git libastal-network-git libastal-notifd-git libastal-tray-git wlsunset bluez bluez-libs bluez-obex bluez-utils cava kitty fastfetch niri starship brightnessctl ttf-jetbrains-mono-nerd
+    yay -S aylurs-gtk-shell-git libastal-4-git libastal-battery-git libastal-git libastal-mpris-git libastal-niri-git libastal-powerprofiles-git libastal-wireplumber-git libastal-apps-git libastal-bluetooth-git libastal-io-git libastal-network-git libastal-notifd-git libastal-tray-git wlsunset bluez bluez-libs bluez-obex bluez-utils cava kitty fastfetch niri starship brightnessctl ttf-jetbrains-mono-nerd swaylock-effects-git
     #initalize starship
     echo 'eval "$(starship init bash)"' >> ~/.bashrc && source ~/.bashrc
 
