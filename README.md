@@ -14,7 +14,8 @@ This is my personal dotfiles for Niri and AGS
     ```bash
     yay -S aylurs-gtk-shell-git libastal-4-git libastal-battery-git libastal-git libastal-mpris-git libastal-niri-git libastal-powerprofiles-git libastal-wireplumber-git libastal-apps-git libastal-bluetooth-git libastal-io-git libastal-network-git libastal-notifd-git libastal-tray-git wlsunset bluez bluez-libs bluez-obex bluez-utils cava kitty fastfetch niri starship brightnessctl ttf-jetbrains-mono-nerd
     #initalize starship
-    eval "$(starship init bash)"
+    echo 'eval "$(starship init bash)"' >> ~/.bashrc && source ~/.bashrc
+
 
 ### Copy the configuration
 1. Clone the repository:
@@ -26,4 +27,6 @@ This is my personal dotfiles for Niri and AGS
    mv Dotfiles/*  ~/.config/
 
 #### Use Super + Shift + / to bring up the keybinds 
+
+#### This uses Firefox , kitty , nemo and swaylock as defaults
    

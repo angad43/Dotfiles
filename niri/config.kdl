@@ -102,7 +102,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+B hotkey-overlay-title="Open a Browser: floorp" { spawn "floorp"; }
+    Mod+B hotkey-overlay-title="Open a Browser: Firefox" { spawn "firefox"; }
     Mod+Space hotkey-overlay-title="Open a App Launcher: ags" { spawn "ags" "toggle" "launcher"; }
     Mod+E hotkey-overlay-title="Open a File Manager: Nemo" { spawn "nemo"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
